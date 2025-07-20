@@ -30,7 +30,7 @@ Use the value of the **Personal Access Token** (PAT) called `trigger-autobuild`.
 - 🔒 Token type: **Fine-grained personal access token**
 - 🔧 Permissions:
   - Access: `@theplanet-earth`
-  - Repository: `theplanet-earth/theaction`
+  - Repository access: `theplanet-earth/theaction`
   - Repository permissions:
     - ✅ Read access to metadata  
     - ✅ Read and Write access to actions  
@@ -49,32 +49,38 @@ This token must be generated under the **Developer Settings** of the account `an
 
 ### 2. 🔐 Define Organization-Level Secrets for `theaction`
 
-Because `theaction` is a **public repo**, you can use organization-level secrets to allow its workflows to push images.  📘 [How to create organization-level secrets](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/using-secrets-in-github-actions#creating-secrets-for-an-organization)
+Because `theaction` is a **public repo**, you can use organization-level secrets to allow its workflows to push images.  
 
-Create the following secrets:
+Create the following secrets. 📘 [How to create organization-level secrets](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/using-secrets-in-github-actions#creating-secrets-for-an-organization)
 
 #### ✅ `GH_PAT` (for GitHub code access)
 
-using the value of the fine-grained PAT called `docker-autobuild` with:
+Use the value of the fine-grained PAT called `docker-autobuild`.
 
-- Access: `@theplanet-earth`
-- Repository access:
-  - `theosm`
-  - `thedashboard`
-  - `thehumongous`
-  - `theburden`
-  - `theshort`
-- Repository permissions:
-  - ✅ Read access to metadata  
-  - ✅ Read and Write access to code  
+- 🕓 Validity: Max 30 days  
+- 🔒 Token type: **Fine-grained personal access token**
+- 🔧 Permissions:
+  - Access: `@theplanet-earth`
+  - Repository access:
+    - `theplanet-earth/theosm`
+    - `theplanet-earth/thedashboard`
+    - `theplanet-earth/thehumongous`
+    - `theplanet-earth/theburden`
+    - `theplanet-earth/theshort`
+  - Repository permissions:
+    - ✅ Read access to metadata  
+    - ✅ Read and Write access to code  
 
 #### 🐙 `GHCR_TOKEN` (for GitHub Container Registry access)
 
-using the value of the (**classic**) PAT called `container-registry` with:
+Use the value of the (**classic**) PAT called `container-registry`.
 
-- `write:packages` → Upload to GHCR  
-- `read:packages` → Download from GHCR  
-- `delete:packages` → Delete from GHCR  
+- 🕓 Validity: Max 30 days  
+- 🔒 Token type: **Personal access tokens (classic)**
+- 🔧 Scopes:
+  - `write:packages` → Upload to GHCR  
+  - `read:packages` → Download from GHCR  
+  - `delete:packages` → Delete from GHCR  
 
 Again, this tokens must be generated under the **Developer Settings** of the account `andreagalle`.
 
@@ -85,7 +91,7 @@ Make these secrets **available only to** the repository `theplanet-earth/theacti
 ### 🛠️ DockerHub
 
 > 🔄 In progress: We're transitioning from GHCR to **DockerHub** for image publication.  
-Stay tuned in [#1](https://github.com/theplanet-earth/theaction/issues/1) for tracking this migration.
+Stay tuned in [#5](https://github.com/theplanet-earth/theaction/issues/5) for tracking this migration.
 
 ### 🔐 Authentication
 
